@@ -28,7 +28,8 @@ namespace WebTask4.Controllers
                 e.Projects,
                 e.Name,
                 e.EmployeeId,
-                e.Email
+                e.Email,
+                e.Age
             })
             .GroupBy(e => e.Name)
             .OrderByDescending(o => o.First().MoneySum)
@@ -36,7 +37,8 @@ namespace WebTask4.Controllers
                 Name = a.First().Name,
                 MoneySum = a.First().MoneySum,
                 EmployeeId = a.First().EmployeeId,
-                Email = a.First().Email
+                Email = a.First().Email,
+                Age = a.First().Age
             }).ToList();
             //            "select e.Name, sum(p.Money) projectSum from Employees e left join Projects p on e.EmployeeId = p.EmployeeId " +
             //"group by p.EmployeeId, e.Name order by projectSum desc";
@@ -80,7 +82,7 @@ namespace WebTask4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,Email,Name")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeId,Email,Age,Name")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +114,7 @@ namespace WebTask4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Email,Name")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Email,Age,Name")] Employee employee)
         {
             if (id != employee.EmployeeId)
             {
