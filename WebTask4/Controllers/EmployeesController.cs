@@ -28,6 +28,7 @@ namespace WebTask4.Controllers
                 e.Projects,
                 e.Name,
                 e.EmployeeId,
+                e.Email,
                 e.Age
             })
             .GroupBy(e => e.Name)
@@ -36,6 +37,7 @@ namespace WebTask4.Controllers
                 Name = a.First().Name,
                 MoneySum = a.First().MoneySum,
                 EmployeeId = a.First().EmployeeId,
+                Email = a.First().Email,
                 Age = a.First().Age
             }).ToList();
             //            "select e.Name, sum(p.Money) projectSum from Employees e left join Projects p on e.EmployeeId = p.EmployeeId " +
@@ -80,7 +82,7 @@ namespace WebTask4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,Age,Name")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeId,Email,Age,Name")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +114,7 @@ namespace WebTask4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Age,Name")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Email,Age,Name")] Employee employee)
         {
             if (id != employee.EmployeeId)
             {

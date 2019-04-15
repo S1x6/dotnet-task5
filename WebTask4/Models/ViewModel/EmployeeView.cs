@@ -11,6 +11,7 @@ namespace WebTask4.Models.ViewModel
         public int EmployeeId { get; set; }
         public string Name { get; set; }
         public int MoneySum { get; set; }
+        public string Email { get; set; }
         public int Age { get; set; }
        
     }

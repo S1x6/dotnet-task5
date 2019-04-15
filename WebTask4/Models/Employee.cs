@@ -9,6 +9,7 @@ namespace WebTask4.Models
     {
         public int EmployeeId { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         public int Age { get; set; }
 
         public ICollection<Project> Projects { get; set; }
